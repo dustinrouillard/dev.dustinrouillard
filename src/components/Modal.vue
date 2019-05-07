@@ -8,9 +8,15 @@
                 <div class="modal-body about">
                     Hi there, I'm Tetrabyte also known as Dustin Rouillard.<br>
                     <br>
-                    I'm a back-end developer who specializes in node.js and who is familiar with front-end work, I'm currently attempting to learn Go, and Elixir to advance my skill set.<br>
+                    I'm a fullstack developer who specializes in node.js, I'm currently attempting to learn Go, and Elixir to advance my skill set.<br>
                     <br>
-                    I'm not very good at frontend work, but I'm learning more about Vue everyday, this site was actually created using Vue from the knowledge I gained while working on Notify.me
+                    I'm not very good at frontend design work, but I'm learning more about Vue everyday, this site was actually created using Vue from the knowledge I gained while working on Notify.me
+                    <br><br>
+                    I consider myself a fullstack developer not because I can design a UI. But mainly because I do a lot of functional frontend work which wouldn't class under backend.
+                    <br><br>
+                    But where I really shine is system administration, anything linux based. Learning all the time to make myself useful in other environments though.
+                    <br>
+                    I'm pretty knowledgeable in the world of cloud infrastructure as well with services like Google Cloud.
                 </div>
                 <footer class="modal-footer">
                     <slot name="footer">

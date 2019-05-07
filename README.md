@@ -1,29 +1,11 @@
-# tetrabyte-personal-site
+# Personal Site
 
-## Project setup
-```
-npm install
-```
+## Domain: Tetrabyte.dev, Tetra.dev
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### Created by: Tetrabyte
 
-### Compiles and minifies for production
-```
-npm run build
-```
+I don't normally open source my projects, but recent events and things have changed my point of view.
 
-### Run your tests
-```
-npm run test
-```
+Enjoy my attempt at making something that looks nice.
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+;)
