@@ -14,7 +14,7 @@
                     <br><br>
                     I consider myself a fullstack developer not because I can design a UI. But mainly because I do a lot of functional frontend work which wouldn't class under backend.
                     <br><br>
-                    But where I really shine is system administration, anything linux based. Learning all the time to make myself useful in other environments though.
+                    But where I really shine is system administration, anything linux based. But in my downtime I am learning more about other tools to make myself useful in other environments though.
                     <br>
                     I'm pretty knowledgeable in the world of cloud infrastructure as well with services like Google Cloud.
                 </div>
