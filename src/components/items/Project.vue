@@ -1,9 +1,9 @@
 <template>
     <div class="project">
-        <img class="project-icon" :src="project.icon"/>
+        <img v-if="project.icon" class="project-icon" :src="project.icon"/>
         <h2 class="project-name">{{ project.name }}</h2>
         <p class="project-position">{{ project.position }}</p>
-        <a :href="project.url" target="_blank" class="project-website">Visit Website</a>
+        <a :href="project.url" target="_blank" class="project-website" :style="{'padding-left': project.icon ? '47px' : 'none'}">{{ project.type == 'website' ? 'Visit Website' : 'Visit Project' }}</a>
     </div>
 </template>
 
@@ -35,7 +35,6 @@ export default {
 }
 
 .project-website {
-    padding-left: 47px;
     margin-top: -10px;
     // position: absolute;
     display: flex;
