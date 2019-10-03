@@ -8,6 +8,7 @@ body, html {
 
   height: 100%;
   margin: 0;
+  overflow: auto;
 }
 
 a, a:link, a:visited, a:hover, a:active {
@@ -32,6 +33,7 @@ a, a:link, a:visited, a:hover, a:active {
   width: 180px;
   height: 180px;
 }
+
 
 .header {
   font-weight: 300;
@@ -103,10 +105,6 @@ a, a:link, a:visited, a:hover, a:active {
 
 .platform {
   margin: 8px;
-}
-
-.margin-right {
-  margin-right: 15px;
 }
 
 .twitter-icon {
@@ -212,4 +210,24 @@ a, a:link, a:visited, a:hover, a:active {
   font-family: "dm";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@media only screen and (max-width: 768px) {
+  .center {
+    text-align: center;
+  }
+  .tab {
+  margin-right: unset;
+  }
+  .avatar {
+    width: 140px;
+    height: 140px;
+  }
+  .header {
+    font-size: 0.6rem;
+  }
+  .big-button {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
 }

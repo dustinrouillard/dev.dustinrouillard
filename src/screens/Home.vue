@@ -7,8 +7,8 @@
         <h3>Fullstack Developer / System Administrator</h3>
       </div>
       <div class="button-container">
-        <button class="big-button margin-right" @click="showModal('about')">About</button>
-        <button class="big-button margin-right" @click="showModal('projects')">Projects</button>
+        <button class="big-button tab" @click="showModal('about')">About</button>
+        <button class="big-button tab" @click="showModal('projects')">Projects</button>
         <button class="big-button" @click="showModal('contributions')">Contributions</button>
       </div>
       <Socials/>
@@ -46,3 +46,17 @@ export default {
   }
 }
 </script>
+<style scoped>
+.tab {
+  margin-right: 15px;
+}
+@media only screen and (max-width: 768px) {
+  .center {
+    text-align: center;
+  }
+  .tab {
+  margin-right: unset;
+  }
+}
+
+</style>
