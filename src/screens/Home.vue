@@ -3,7 +3,7 @@
     <div class="header">
       <img alt="avatar" class="avatar" src="../assets/logo.gif">
       <div class="info">
-        <h1>Tetrabyte</h1>
+        <h1>Dustin Rouillard</h1>
         <h3>Fullstack Developer / System Administrator</h3>
       </div>
       <div class="button-container">
