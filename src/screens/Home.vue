@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <div class="header">
-      <img alt="avatar" class="avatar" src="../assets/logo.gif">
+      <img alt="avatar" class="avatar" src="../assets/avatar.jpg">
       <div class="info">
         <h1>Dustin Rouillard</h1>
         <h3>Fullstack Developer / System Administrator</h3>

@@ -6,7 +6,7 @@
                     <h1>About</h1>
                 </div>
                 <div class="modal-body about">
-                    Hi there, I'm Tetrabyte also known as Dustin Rouillard.<br>
+                    Hi there, I'm Dustin Rouillard also known as Tetrabyte.<br>
                     <br>
                     I'm a fullstack developer who specializes in node.js, I'm currently attempting to learn Go, and Elixir to advance my skill set.<br>
                     <br>
