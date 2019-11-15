@@ -2,12 +2,11 @@ export default [
     {
         name: 'Cache Monkey',
         icon: '/assets/monkey.png',
-        url: 'https://jamiepine.com/cachemonkey'
+        url: 'https://cachemonkey.app'
     },
     {
         name: 'Pulse',
-        icon: '/assets/jamie.jpg',
-        circle: true,
-        url: 'https://jamiepine.com/pulse'
+        icon: '/assets/pulse.png',
+        url: 'https://pulse.js.org'
     }
 ]

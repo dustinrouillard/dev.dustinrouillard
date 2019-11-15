@@ -8,7 +8,6 @@ import VueTippy from 'vue-tippy'
 // App, Router, and store
 import App from './App';
 import router from './router';
-import store from './store';
 
 // Font Awesome Libraries
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -42,7 +41,6 @@ Vue.use(VueAnalytics, {
 // Create Vue Instance
 new Vue({
     el: '#app',
-    store,
     router,
     render: h => h(App)
 });

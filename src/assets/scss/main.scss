@@ -16,11 +16,22 @@ a, a:link, a:visited, a:hover, a:active {
   color: inherit;
 }
 
-.background-image {
-  background: url('assets/background.jpg');
+.view-source {
+  opacity: 0.5;
+  font-size: 26px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  &:hover {
+    opacity: 1;
+  }
+}
 
-  filter: blur(8px);
-  -webkit-filter: blur(8px);
+.background-image {
+  background: url('assets/VancouverView.jpg');
+
+  filter: blur(10px);
+  -webkit-filter: blur(10px);
   height: 100%;
 
   background-position: center;
@@ -52,7 +63,7 @@ a, a:link, a:visited, a:hover, a:active {
 
 .info {
   background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0, 0.4);
+  background-color: rgba(0, 0, 0, 0.29);
   margin-top: 15px;
   padding: 0 12px 0 12px;
   border: 1px solid;
