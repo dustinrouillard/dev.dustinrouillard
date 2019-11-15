@@ -78,9 +78,11 @@ export default {
           let itemToChange = await this.name.filter(
             item => item.position == letters[o].position
           );
+
           itemToChange.forEach(item => {
             item.text = letters[o].text;
           });
+
           continue;
         }
 
@@ -105,19 +107,17 @@ export default {
     },
 
     async expandName() {
-      let startNumber = this.letterSpacing;
       let int = setInterval(() => {
-        this.letterSpacing = this.letterSpacing + 0.9;
+        this.letterSpacing = this.letterSpacing + 0.07;
         if (this.letterSpacing >= 10) return clearInterval(int);
-      }, 100);
+      }, 10);
     },
 
     async shortenName() {
-      let startNumber = this.letterSpacing;
       let int = setInterval(() => {
-        this.letterSpacing = this.letterSpacing - 0.4;
+        this.letterSpacing = this.letterSpacing - 0.06;
         if (this.letterSpacing <= 3) return clearInterval(int);
-      }, 100);
+      }, 10);
     }
   }
 };
