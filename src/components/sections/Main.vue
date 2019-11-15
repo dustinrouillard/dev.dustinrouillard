@@ -1,5 +1,6 @@
 <template>
   <div class="main">
+    <span class="view-source" title="View Source Code" v-tippy="{ placement: 'bottom' }"><a href="https://github.com/dustinrouillard/dev.dustinrouillard" target="_blank"><fa class="view-source-icon" :icon="['fas', 'code-branch']" /></a></span>
     <div class="header">
       <img alt="avatar" class="avatar" src="../../assets/avatar.jpg">
       <Info />
