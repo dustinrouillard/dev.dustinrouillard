@@ -4,7 +4,7 @@
       class="name"
       :style="{ 'letter-spacing': `${letterSpacing}px`, 'opacity': opacity }"
     >{{ name ? name.map(item => item.text).join('') : '' }}</h1>
-    <h3>Fullstack Developer / System Administrator</h3>
+    <h3>Fullstack Engineer / Systems Administrator</h3>
   </div>
 </template>
 
@@ -23,7 +23,7 @@ export default {
     let int = setInterval(async () => {
       await this.sleep(5);
       this.opacity = this.opacity + 0.1;
-      if (this.opacity == 1) return clearInterval(int);
+      if (this.opacity >= 1) return clearInterval(int);
     }, 100);
 
     await this.updateName();

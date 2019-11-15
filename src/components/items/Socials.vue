@@ -1,7 +1,7 @@
 <template>
     <div class="socials">
         <span class="platform" title="Twitter" v-tippy="{ placement: 'bottom' }"><a href="https://twitter.com/dustinrouillard" target="_blank"><fa class="twitter-icon" :icon="['fab', 'twitter']" /></a></span>
-        <span class="platform" title="Twitch" v-tippy="{ placement: 'bottom' }"><a href="https://twitch.tv/thetetrabyte" target="_blank"><fa class="twitch-icon" :icon="['fab', 'twitch']" /></a></span>
+        <span class="platform" title="Twitch" v-tippy="{ placement: 'bottom' }"><a href="https://twitch.tv/dustinrouillard" target="_blank"><fa class="twitch-icon" :icon="['fab', 'twitch']" /></a></span>
         <span class="platform" title="Github" v-tippy="{ placement: 'bottom' }"><a href="https://github.com/dustinrouillard" target="_blank"><fa class="github-icon" :icon="['fab', 'github']" /></a></span>
         <span class="platform" title="Gitlab" v-tippy="{ placement: 'bottom' }"><a href="https://gitlab.com/tetrabyte" target="_blank"><fa class="gitlab-icon" :icon="['fab', 'gitlab']" /></a></span>
         <span class="platform" title="NPM" v-tippy="{ placement: 'bottom' }"><a href="https://npmjs.com/~tetrabyte" target="_blank"><fa class="npm-icon" :icon="['fab', 'npm']" /></a></span>
