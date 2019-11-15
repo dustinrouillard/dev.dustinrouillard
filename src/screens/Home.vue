@@ -16,3 +16,17 @@ export default {
   methods: {}
 }
 </script>
+<style scoped>
+.tab {
+  margin-right: 15px;
+}
+@media only screen and (max-width: 768px) {
+  .center {
+    text-align: center;
+  }
+  .tab {
+  margin-right: unset;
+  }
+}
+
+</style>
