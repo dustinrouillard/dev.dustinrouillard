@@ -6,17 +6,17 @@
                     <h1>About</h1>
                 </div>
                 <div class="modal-body about">
-                    Hi there, I'm Dustin Rouillard also known as Tetrabyte.<br>
+                    Hello there, I'm Dustin Rouillard, I'm 20 and I currently live in Vancouver, British Colombia, but really want to move back to Los Angeles.<br>
                     <br>
-                    I'm a fullstack developer who specializes in node.js, I'm currently attempting to learn Go, and Elixir to advance my skill set.<br>
+                    I'm a fullstack developer who specializes in Node.js, I'm currently attempting to learn Go to advance my skill set.<br>
                     <br>
-                    I'm not very good at frontend design work, but I'm learning more about Vue everyday, this site was actually created using Vue from the knowledge I gained while working on Notify.me
+                    I'm not very good at frontend design work, but it's a learning process, this site was actually created using Vue from the knowledge I gained while working on Notify.me
                     <br><br>
                     I consider myself a fullstack developer not because I can design a UI. But mainly because I do a lot of functional frontend work which wouldn't class under backend.
                     <br><br>
-                    But where I really shine is system administration, anything linux based. But in my downtime I am learning more about other tools to make myself useful in other environments though.
-                    <br>
-                    I'm pretty knowledgeable in the world of cloud infrastructure as well with services like Google Cloud.
+                    But where I really shine is in systems administration, anything linux based. But in my freetime I am learning more about other tools to make myself useful in other environments.
+                    <br><br>
+                    I'm in the process of learning anything and everything there is to know about cloud infrastructure, and how all that works. I'm really interested in Kubernetes personally.
                 </div>
                 <footer class="modal-footer">
                     <slot name="footer">
