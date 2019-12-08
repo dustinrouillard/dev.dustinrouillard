@@ -4,7 +4,18 @@ export default [
         type: 'website',
         icon: '/assets/notify.png',
         position: 'Co-Founder / System Admin',
+        start: '',
+        contact: 'dustin@notify.me',
         url: 'https://notify.me'
+    },
+    {
+        name: 'Hiven',
+        type: 'application',
+        icon: '/assets/hiven.png',
+        position: 'Developer',
+        start: '',
+        contact: 'dustin@hiven.io',
+        url: 'https://hiven.io'
     },
     {
         name: 'DiscordBotWorld',
