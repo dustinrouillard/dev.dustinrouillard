@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
         - name: website
-          image: gcr.io/dustinrouillard/app:v1
+          image: gcr.io/dustinrouillard/app:v2
           imagePullPolicy: Always
           ports:
             - containerPort: 5000
