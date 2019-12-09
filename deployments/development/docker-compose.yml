@@ -1,0 +1,12 @@
+version: "3.7"
+
+services:
+  app:
+    build:
+      context: ../../
+      dockerfile: deployments/development/Dockerfile
+    volumes:
+      - "../../:/app"
+      - "/app/node_modules"
+    ports:
+      - "8080:8080"
