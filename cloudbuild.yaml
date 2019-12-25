@@ -17,12 +17,15 @@ steps:
 
   - name: "gcr.io/cloud-builders/gsutil"
     id: Copy git ssh key
-    entrypoint: /bin/sh
     args:
-      - "-c"
-      - |
-        cp gs://dustinrouillard.appspot.com/private/git.ssh ~/.ssh/id_rsa && \
-        chmod 0600 ~/.ssh/id_rsa
+      [
+        "cp",
+        "gs://dustinrouillard.appspot.com/private/git.ssh",
+        "~/.ssh/id_rsa &&",
+        "chmod",
+        "0600",
+        "~/.ssh/id_rsa",
+      ]
 
   - name: "gcr.io/cloud-builders/git"
     id: Clone env repository
