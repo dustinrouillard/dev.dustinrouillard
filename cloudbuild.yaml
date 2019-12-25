@@ -64,6 +64,9 @@ steps:
         cd sh.dustin.k8s && \
         git checkout candidate && \
         git config user.email ci@dustin.sh
+    volumes:
+      - name: "ssh"
+        path: /root/.ssh
 
   - name: "gcr.io/cloud-builders/gcloud"
     id: Generate manifest
