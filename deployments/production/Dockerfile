@@ -5,7 +5,7 @@ RUN npm install -g servor
 RUN mkdir /app
 WORKDIR /app
 
-COPY package*.json .
+COPY package*.json ./
 RUN npm install
 
 COPY . .
