@@ -15,6 +15,15 @@ steps:
       - "push"
       - "gcr.io/$PROJECT_ID/website:$SHORT_SHA"
 
+  - name: "gcr.io/cloud-builders/gcloud"
+    id: Copy git ssh key
+    entrypoint: /bin/sh
+    args:
+      - "-c"
+      - |
+        gsutil gs://dustinrouillard.appspot.com/private/git.ssh ~/.ssh/id_rsa && \
+        chmod 0600 ~/.ssh/id_rsa
+
   - name: "gcr.io/cloud-builders/git"
     id: Clone env repository
     entrypoint: /bin/sh
