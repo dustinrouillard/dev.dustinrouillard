@@ -1,0 +1,48 @@
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    id: Build
+    args:
+      - "build"
+      - "-t"
+      - "gcr.io/$PROJECT_ID/website:$SHORT_SHA"
+      - "."
+
+  - name: "gcr.io/cloud-builders/docker"
+    id: Push
+    args:
+      - "push"
+      - "gcr.io/$PROJECT_ID/website:$SHORT_SHA"
+
+  - name: "gcr.io/cloud-builders/git"
+    id: Clone env repository
+    entrypoint: /bin/sh
+    args:
+      - "-c"
+      - |
+        git clone git@github.com:dustinrouillard/sh.dustin.k8s && \
+        cd sh.dustin.k8s && \
+        git checkout candidate && \
+        git config user.email ci@dustin.sh
+
+  - name: "gcr.io/cloud-builders/gcloud"
+    id: Generate manifest
+    entrypoint: /bin/sh
+    args:
+      - "-c"
+      - |
+        sed "s/GOOGLE_CLOUD_PROJECT/${PROJECT_ID}/g" deployment.yaml.tpl | \
+        sed "s/COMMIT_SHA/${SHORT_SHA}/g" > sh.dustin.k8s/deployment.yaml
+
+  - name: "gcr.io/cloud-builders/gcloud"
+    id: Push manifest
+    entrypoint: /bin/sh
+    args:
+      - "-c"
+      - |
+        set -x && \
+        cd sh.dustin.k8s && \
+        git add deployment.yaml && \
+        git commit -m "Deploying image gcr.io/${PROJECT_ID}/website:${SHORT_SHA}
+        Built from commit ${COMMIT_SHA} of repository dev.dustinrouillard
+        Author: $(git log --format='%an <%ae>' -n 1 HEAD)" && \
+        git push origin candidate
