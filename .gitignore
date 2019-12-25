@@ -3,6 +3,9 @@ node_modules
 /dist
 dist.zip
 
+# k8s deploy
+deployments/production/deployment.yaml
+
 # local env files
 .env.local
 .env.*.local
