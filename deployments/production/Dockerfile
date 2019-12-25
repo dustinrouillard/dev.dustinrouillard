@@ -1,6 +1,6 @@
 FROM node:latest
 
-RUN npm install -g http-server
+RUN npm install -g http-server-spa
 
 RUN mkdir /app
 WORKDIR /app
@@ -13,6 +13,6 @@ COPY . .
 RUN npm run build
 
 EXPOSE 5000
-CMD [ "http-server", "-p 5000", "dist" ]
+CMD [ "http-server-spa", "-p 5000", "dist" ]
 
 
