@@ -74,7 +74,7 @@ steps:
     args:
       - "-c"
       - |
-        sed "s/GOOGLE_CLOUD_PROJECT/${PROJECT_ID}/g" deployment.yaml.tpl | \
+        sed "s/GOOGLE_CLOUD_PROJECT/${PROJECT_ID}/g" sh.dustin.k8s/deployment.yaml.tpl | \
         sed "s/COMMIT_SHA/${SHORT_SHA}/g" > sh.dustin.k8s/deployment.yaml
 
   - name: "gcr.io/cloud-builders/gcloud"
