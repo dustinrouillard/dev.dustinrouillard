@@ -6,6 +6,8 @@ steps:
       - "-t"
       - "gcr.io/$PROJECT_ID/website:$SHORT_SHA"
       - "."
+      - "-f"
+      - "deployments/production/Dockerfile"
 
   - name: "gcr.io/cloud-builders/docker"
     id: Push
