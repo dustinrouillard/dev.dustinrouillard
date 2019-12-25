@@ -24,7 +24,7 @@ export default [
         position: 'Maintainer / Owner',
         start: '2019-11-26T08:00:00.000Z',
         contact: 'dustin@hiven.io',
-        url: 'https://github.com/hivenapp/hiven.js'
+        url: 'https://hiven.js.org'
     },
     {
         name: 'DiscordBotWorld',
@@ -38,13 +38,13 @@ export default [
         type: 'project',
         icon: '',
         position: 'Creator',
-        url: 'https://github.com/thetetrabyte/go-spotify-txt'
+        url: 'https://github.com/dustinrouillard/go-spotify-txt'
     },
     {
         name: 'Git Hook',
         type: 'project',
         icon: '',
         position: 'Creator',
-        url: 'https://github.com/thetetrabyte/git-hook'
+        url: 'https://github.com/dustinrouillard/git-hook'
     }
 ]

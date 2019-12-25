@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import redirects from './redirects.js';
 
 Vue.use(Router);
 
@@ -11,6 +12,7 @@ export default new Router({
       path: '/',
       name: 'home',
       component: () => import('../screens/Home.vue')
-    }
+    },
+    ...redirects
   ]
 });
