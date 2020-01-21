@@ -1,0 +1,203 @@
+<template>
+  <div class="main">
+    <video ref="videoPlayer" class="video-js"></video>
+    <div class="chat-sidebar">
+      <div class="chat-header">
+        <h3 class="chat-header-title">Welcome to the chat room</h3>
+      </div>
+      <div class="chat-content">
+        <Chat id="messageContainer" />
+      </div>
+      <div class="chat-footer">
+        <div class="chat-box-outter">
+          <form @submit.prevent="sendMessage">
+            <input v-model="message" class="chat-box" />
+            <input class="chat-send" value="Send" type="submit" />
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import videojs from "video.js";
+import Chat from "../components/Chat/Chat";
+
+export default {
+  name: "NDA",
+  data() {
+    return {
+      stream: {
+        online: true
+      },
+      message: "TESTING 1234 KAPPA",
+      ...this.mapData(() => ({
+        messages: "messages/chat-messages"
+      })),
+      player: null,
+      options: {
+        autoplay: false,
+        controls: true,
+        sources: [
+          {
+            src: "http://10.10.2.65:9200/live/dustin/index.m3u8",
+            type: "application/x-mpegURL"
+          }
+        ]
+      }
+    };
+  },
+  components: {
+    Chat
+  },
+  mounted() {
+    this.$messages.populate();
+
+    this.player = videojs(
+      this.$refs.videoPlayer,
+      this.options,
+      function onPlayerReady() {
+        console.log("onPlayerReady", this);
+      }
+    );
+
+    // this.player.on('')
+  },
+  beforeDestroy() {
+    if (this.player) {
+      this.player.dispose();
+    }
+  },
+  methods: {
+    async sendMessage() {
+      if (this.message == "") return;
+      this.$messages.send(this.message);
+      this.message = "";
+      setTimeout(() => {
+        let container = this.$el.querySelector("#messageContainer");
+        container.scrollTop = container.scrollHeight;
+      }, 2);
+      return true;
+    },
+    async scrollToEnd() {}
+  }
+};
+</script>
+
+<style lang="scss">
+@import "../assets/css/video-js.min.css";
+
+.video-js {
+  display: flex;
+  margin: auto;
+  width: 77%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.chat-sidebar {
+  display: flex;
+  margin: auto;
+  width: 23%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10000;
+  background-color: #1b1b1b;
+  border-color: #bebebe00;
+  border-left: 1px;
+  border-left-style: inset;
+}
+
+.chat-header {
+  background-color: #0a0a0a;
+  border-color: #bebebe00;
+  border-bottom: 1px;
+  z-index: 20000;
+  border-bottom-style: outset;
+  display: flex;
+  margin: auto;
+  width: 100%;
+  height: 4%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+.chat-header .chat-header-title {
+  color: #ffffff;
+  display: flex;
+  margin: auto;
+  font-size: 13px;
+}
+
+.chat-box {
+  position: absolute;
+  display: flex;
+  max-height: 20px;
+  max-width: 1000px;
+  height: 25px;
+  width: 89%;
+  margin-top: 13px;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 45px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: #ffffff;
+  background-color: #1d1d1d;
+  border-color: #5252521f;
+  border-style: solid;
+  border-radius: 2px;
+  padding: 10px 10px 10px 10px;
+}
+
+.chat-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 105px;
+  display: flex;
+  border-color: #bebebe00;
+  border-top: 1px;
+  border-top-style: inset;
+}
+
+.chat-send {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 25px;
+  width: 94%;
+  min-width: 443px;
+  background: #442dad;
+  color: white;
+  border: 0;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 12px;
+  border-radius: 2px;
+  text-decoration: none;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    background-color: #2d1e70;
+  }
+  &:active {
+    background-color: #2d1e70;
+    box-shadow: 0 1px #2d1e70;
+    transform: translateY(-0.9px);
+  }
+}
+</style>
