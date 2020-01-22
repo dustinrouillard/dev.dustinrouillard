@@ -41,7 +41,7 @@ export default {
         controls: true,
         sources: [
           {
-            src: "http://10.10.2.65:9200/live/dustin/index.m3u8",
+            src: "http://nda.dustin.sh/live/dustin/index.m3u8",
             type: "application/x-mpegURL"
           }
         ]
