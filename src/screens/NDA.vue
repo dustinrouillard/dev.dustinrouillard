@@ -31,7 +31,7 @@ export default {
       stream: {
         online: true
       },
-      message: "TESTING 1234 KAPPA",
+      message: "",
       ...this.mapData(() => ({
         messages: "messages/chat-messages"
       })),
@@ -53,6 +53,7 @@ export default {
   },
   mounted() {
     this.$messages.populate();
+    this.$services.socket.connect(this.$el.querySelector("#messageContainer"));
 
     this.player = videojs(
       this.$refs.videoPlayer,
@@ -81,6 +82,11 @@ export default {
       return true;
     },
     async scrollToEnd() {}
+  },
+  watch: {
+    messages() {
+      console.log("Changed");
+    }
   }
 };
 </script>

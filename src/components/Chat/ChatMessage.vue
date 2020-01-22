@@ -1,6 +1,6 @@
 <template>
   <div class="chat-message">
-    <span class="chat-timestamp">{{ new Date(message.sent).toLocaleTimeString('en-US') }}</span>
+    <span class="chat-timestamp">{{ new Date(message.date).toLocaleTimeString('en-US') }}</span>
     <span class="chat-author" :style="{ color: message.author.color }">{{ message.author.name }}</span>:
     <span class="chat-content">{{ message.content }}</span>
   </div>
