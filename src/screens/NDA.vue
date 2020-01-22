@@ -4,6 +4,7 @@
     <div class="chat-sidebar">
       <div class="chat-header">
         <h3 class="chat-header-title">Welcome to the chat room</h3>
+        <span class="chatters">{{ chatters }}</span>
       </div>
       <div class="chat-content">
         <Chat id="messageContainer" />
@@ -32,8 +33,8 @@ export default {
         online: true
       },
       message: "",
-      ...this.mapData(() => ({
-        messages: "messages/chat-messages"
+      ...this.mapData(core => ({
+        chatters: core.services.socket.chatters
       })),
       player: null,
       options: {
@@ -205,5 +206,12 @@ export default {
     box-shadow: 0 1px #2d1e70;
     transform: translateY(-0.9px);
   }
+}
+
+.chatters {
+  margin-left: -15px;
+  margin-right: 15px;
+  margin-top: 12px;
+  font-size: 14px;
 }
 </style>
