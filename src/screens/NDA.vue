@@ -39,7 +39,8 @@ export default {
       })),
       player: null,
       options: {
-        autoplay: false,
+        autoplay: true,
+        muted: true,
         controls: true,
         sources: [
           {
