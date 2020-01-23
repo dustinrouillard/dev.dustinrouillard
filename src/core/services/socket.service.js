@@ -108,9 +108,14 @@ export default {
                             data.chattersCount = payload.data.chattersCount;
                             data.chatters = payload.data.chatters;
                             break;
+                        case 9:
+                            
+                            break;
+
                         case 10:
                             messages.account = payload.data;
                             break;
+                            
                         default:
                             console.log(payload);
                             break;

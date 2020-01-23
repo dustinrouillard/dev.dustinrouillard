@@ -1,6 +1,10 @@
 <template>
   <div class="main">
-    <video ref="videoPlayer" class="video-js"></video>
+    <video
+      ref="videoPlayer"
+      class="video-js"
+      :style="{ 'pointer-events': !stream.online ? 'none' : ''  }"
+    ></video>
     <div class="chat-sidebar">
       <div class="chat-header">
         <h3 class="chat-header-title">{{ stream.title }}</h3>
@@ -34,10 +38,9 @@ export default {
   name: "NDA",
   data() {
     return {
-      stream: {
-        title: "First Gaming Stream LULW",
-        online: true
-      },
+      ...this.mapData(core => ({
+        stream: core.services.stream.stream
+      })),
       message: "",
       ...this.mapData(core => ({
         lastMessage: core.messages.lastMessage,
@@ -48,13 +51,14 @@ export default {
       options: {
         autoplay: true,
         muted: true,
-        controls: true,
-        sources: [
-          {
-            src: "https://nda.dustin.sh/live/dustin/index.m3u8",
-            type: "application/x-mpegURL"
-          }
-        ]
+        ...this.mapData(core => ({
+          controls: core.services.stream.stream.online
+        })),
+        poster: "https://assets.notify.me/covers/2.png",
+        ...this.mapData(core => ({
+          suppressNotSupportedError: true,
+          sources: [core.services.stream.stream.url]
+        }))
       }
     };
   },
@@ -73,6 +77,7 @@ export default {
       }
     );
 
+    console.log(this.stream, this.options);
     // this.player.on('')
   },
   beforeDestroy() {

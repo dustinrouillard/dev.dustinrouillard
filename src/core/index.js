@@ -6,6 +6,7 @@ import messages from './collections/messages.collection';
 import accounts from './collections/accounts.collection';
 
 // Services
+import stream from './services/stream.service';
 import socket from './services/socket.service';
 
 Pulse.use(Vue);
@@ -20,6 +21,7 @@ export default new Pulse({
         accounts
     },
     services: {
+        stream,
         socket
     }
 });
