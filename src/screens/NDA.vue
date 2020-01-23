@@ -12,7 +12,12 @@
       <div class="chat-footer">
         <div class="chat-box-outter">
           <form @submit.prevent="sendMessage">
-            <input v-model="message" class="chat-box" />
+            <input
+              v-model="message"
+              @keyup.esc="message = ''"
+              @keyup.up="message = lastMessage"
+              class="chat-box"
+            />
             <input class="chat-send" value="Send" type="submit" />
           </form>
         </div>
@@ -35,6 +40,7 @@ export default {
       },
       message: "",
       ...this.mapData(core => ({
+        lastMessage: core.messages.lastMessage,
         chatters: core.services.socket.chatters,
         chattersCount: core.services.socket.chattersCount
       })),
@@ -88,11 +94,6 @@ export default {
       return true;
     },
     async scrollToEnd() {}
-  },
-  watch: {
-    messages() {
-      console.log("Changed");
-    }
   }
 };
 </script>

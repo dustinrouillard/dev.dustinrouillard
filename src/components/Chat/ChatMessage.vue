@@ -64,7 +64,7 @@ export default {
   word-wrap: break-word;
 
   &.system-chat {
-    text-align: center;
+    // text-align: center;
   }
 
   .failed {

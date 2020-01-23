@@ -5,24 +5,29 @@ export default {
             username: '',
             name: '',
             color: ''
-        }
+        },
+        lastMessage: '',
+        CHATTERS_LIMIT: 10
     },
     groups: ['chat-messages'],
     routes: {
-
+        
     },
     actions: {
-        async send({ collect, services, data, destroy, messages }, content) {
-
+        async send({ collect, services, data, messages }, content) {
+            
+            data.lastMessage = content;
+            
             if (content.startsWith('/')) {
                 let lc = content.toLowerCase();
                 let cmd = lc
-                    .split("/")
-                    .slice(1)
-                    .join("")
-                    .split(" ")[0];
-
+                .split("/")
+                .slice(1)
+                .join("")
+                .split(" ")[0];
+                
                 let raw = content.split(" ").splice(1).join(" ");
+                
 
                 switch (cmd) {
                     case "ping":
@@ -47,6 +52,10 @@ export default {
                         collect({ id: Math.floor(Math.random() * 100000), author, content: raw, date: new Date().toISOString() }, 'chat-messages');
                         await services.socket.sendMessage(raw, true);
                         break;
+                    case "chatters":
+                        let chattersMessage = `Current chatters: ${services.socket.chatters.length <= data.CHATTERS_LIMIT ? `${services.socket.chatters.map(chatter => `${chatter.user.username}`).join(', ')}` : `${services.socket.chatters.map(chatter => `${chatter.user.username}`).slice(0, data.CHATTERS_LIMIT).join(', ')}... and ${(services.socket.chatters.length - data.CHATTERS_LIMIT).toLocaleString()} more`}`;
+                        collect({ id: Math.floor(Math.random() * 100000), content: chattersMessage, system: true, date: new Date().toISOString() }, 'chat-messages');
+                        break;
                     default:
                         break;
                 }
@@ -70,6 +79,7 @@ export default {
 
                 return true;
             }
+
         },
 
         populate({ collect }) {
