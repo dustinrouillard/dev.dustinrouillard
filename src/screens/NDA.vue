@@ -15,15 +15,7 @@
       </div>
       <div class="chat-footer">
         <div class="chat-box-outter">
-          <form @submit.prevent="sendMessage">
-            <input
-              v-model="message"
-              @keyup.esc="message = ''"
-              @keyup.up="message = lastMessage"
-              class="chat-box"
-            />
-            <input class="chat-send" value="Send" type="submit" />
-          </form>
+          <ChatSend/>
         </div>
       </div>
     </div>
@@ -33,6 +25,7 @@
 <script>
 import videojs from "video.js";
 import Chat from "../components/Chat/Chat";
+import ChatSend from "../components/Chat/ChatSend";
 
 export default {
   name: "NDA",
@@ -63,7 +56,8 @@ export default {
     };
   },
   components: {
-    Chat
+    Chat,
+    ChatSend
   },
   mounted() {
     this.$messages.populate();
