@@ -5,7 +5,8 @@ export default {
     },
     data: {
         endpoint: 'wss://api.dustin.sh/socket',
-        chatters: 0,
+        chattersCount: 0,
+        chatters: [],
         token: '',
         pendingMessages: []
     },
@@ -104,6 +105,7 @@ export default {
                             break;
 
                         case 0:
+                            data.chattersCount = payload.data.chattersCount;
                             data.chatters = payload.data.chatters;
                             break;
                         case 10:

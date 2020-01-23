@@ -4,7 +4,7 @@
     <div class="chat-sidebar">
       <div class="chat-header">
         <h3 class="chat-header-title">Welcome to the chat room</h3>
-        <span class="chatters">{{ chatters }}</span>
+        <span class="chatters">{{ chattersCount }}</span>
       </div>
       <div class="chat-content">
         <Chat id="messageContainer" />
@@ -34,7 +34,8 @@ export default {
       },
       message: "",
       ...this.mapData(core => ({
-        chatters: core.services.socket.chatters
+        chatters: core.services.socket.chatters,
+        chattersCount: core.services.socket.chattersCount
       })),
       player: null,
       options: {
