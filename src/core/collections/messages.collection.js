@@ -39,12 +39,7 @@ export default {
                         if (raw.length >= 128) {
                             let author = { username: data.account.username, name: data.account.name, action: true };
                             let failedId = new Date().getTime() + Math.floor(Math.random() * 100000);
-                            collect({ id: failedId, content: raw, author, failed: true, date: new Date().toISOString() }, 'chat-messages');
-
-                            // Wait 10 seconds and remove chat
-                            setTimeout(() => {
-                                messages.delete(failedId, 'chat-messages');
-                            }, 5*1000);
+                            collect({ id: failedId, content: 'Message too long', author, failed: true, date: new Date().toISOString() }, 'chat-messages');
                             return false;
                         }
 
@@ -63,12 +58,7 @@ export default {
                 if (content.length >= 512) {
                     let author = { username: data.account.username, name: data.account.name };
                     let failedId = new Date().getTime() + Math.floor(Math.random() * 100000);
-                    collect({ id: failedId, content, author, failed: true, date: new Date().toISOString() }, 'chat-messages');
-
-                    // Wait 10 seconds and remove chat
-                    setTimeout(() => {
-                        messages.delete(failedId, 'chat-messages');
-                    }, 5*1000);
+                    collect({ id: failedId, content: 'Message too long', author, failed: true, date: new Date().toISOString() }, 'chat-messages');
                     return false;
                 }
 

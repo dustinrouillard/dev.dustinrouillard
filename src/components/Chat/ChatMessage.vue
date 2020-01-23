@@ -1,25 +1,33 @@
 <template>
-  <div class="chat-message" v-if="!message.system && message.author && !message.author.action">
-    <span class="chat-timestamp">{{ new Date(message.date).toLocaleTimeString('en-US') }}</span>
-    <span class="chat-author" :style="{ color: message.author.color }">{{ message.author.name }}</span>:
-    <span
-      class="chat-content"
-      :class="{ failed: message.failed, 'fade-out': message.failed }"
-    >{{ message.content }}</span>
+  <div
+    class="chat-message"
+    :class="{ 'system-message': message.failed }"
+    v-if="!message.system && message.author && !message.author.action"
+  >
+    <div v-if="!message.failed">
+      <span class="chat-timestamp">{{ new Date(message.date).toLocaleTimeString('en-US') }}</span>
+      <span class="chat-author" :style="{ color: message.author.color }">{{ message.author.name }}</span>:
+      <span class="chat-content">{{ message.content }}</span>
+    </div>
+    <div v-else>
+      <span class="system-message error">{{ message.content }}</span>
+    </div>
   </div>
   <div
-    class="chat-message action-message"
+    class="chat-message action-message system-message"
     v-else-if="message.author && message.author.action && !message.system"
   >
-    <span class="chat-timestamp">{{ new Date(message.date).toLocaleTimeString('en-US') }}</span>
-    <span
-      class="chat-author space-right"
-      :style="{ color: message.author.color }"
-    >{{ message.author.name }}</span>
-    <span
-      class="chat-content"
-      :class="{ failed: message.failed, 'fade-out': message.failed }"
-    >{{ message.content }}</span>
+    <div v-if="!message.failed">
+      <span class="chat-timestamp">{{ new Date(message.date).toLocaleTimeString('en-US') }}</span>
+      <span
+        class="chat-author space-right"
+        :style="{ color: message.author.color }"
+      >{{ message.author.name }}</span>
+      <span class="chat-content">{{ message.content }}</span>
+    </div>
+    <div v-else>
+      <span class="system-message error">{{ message.content }}</span>
+    </div>
   </div>
   <div class="chat-message system-chat" v-else-if="message.system">
     <span class="system-message">{{ message.content }}</span>
@@ -104,6 +112,10 @@ export default {
     -ms-animation: fadeOut 5.2s; /* Internet Explorer */
     -o-animation: fadeOut 5.2s; /* Opera < 12.1 */
     animation: fadeOut 5.2s;
+  }
+
+  .error {
+    color: #c72d2d;
   }
 }
 
