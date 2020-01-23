@@ -12,7 +12,7 @@ export default {
 
     },
     actions: {
-        async send({ collect, services, data }, content) {
+        async send({ collect, services, data, destroy, messages }, content) {
 
             if (content.startsWith('/')) {
                 let lc = content.toLowerCase();
@@ -31,6 +31,18 @@ export default {
                         break;
 
                     case "me":
+                        if (raw.length >= 128) {
+                            let author = { username: data.account.username, name: data.account.name, action: true };
+                            let failedId = new Date().getTime() + Math.floor(Math.random() * 100000);
+                            collect({ id: failedId, content: raw, author, failed: true, date: new Date().toISOString() }, 'chat-messages');
+
+                            // Wait 10 seconds and remove chat
+                            setTimeout(() => {
+                                messages.delete(failedId, 'chat-messages');
+                            }, 5*1000);
+                            return false;
+                        }
+
                         let author = { username: data.account.username, name: data.account.name, action: true };
                         collect({ id: Math.floor(Math.random() * 100000), author, content: raw, date: new Date().toISOString() }, 'chat-messages');
                         await services.socket.sendMessage(raw, true);
@@ -39,6 +51,18 @@ export default {
                         break;
                 }
             } else {
+                if (content.length >= 512) {
+                    let author = { username: data.account.username, name: data.account.name };
+                    let failedId = new Date().getTime() + Math.floor(Math.random() * 100000);
+                    collect({ id: failedId, content, author, failed: true, date: new Date().toISOString() }, 'chat-messages');
+
+                    // Wait 10 seconds and remove chat
+                    setTimeout(() => {
+                        messages.delete(failedId, 'chat-messages');
+                    }, 5*1000);
+                    return false;
+                }
+
                 let author = { username: data.account.username, name: data.account.name };
                 collect({ id: Math.floor(Math.random() * 100000), content, author, date: new Date().toISOString() }, 'chat-messages');
 
