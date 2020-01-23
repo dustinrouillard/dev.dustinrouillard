@@ -47,6 +47,8 @@ export default {
   -o-animation: fadein 0.7s; /* Opera < 12.1 */
   animation: fadein 0.7s;
 
+  word-wrap: break-word;
+
   &.system-chat {
     text-align: center;
   }
