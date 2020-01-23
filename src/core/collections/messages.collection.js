@@ -17,7 +17,7 @@ export default {
         async send({ collect, services, data, messages }, content) {
             
             data.lastMessage = content;
-            
+
             if (content.startsWith('/')) {
                 let lc = content.toLowerCase();
                 let cmd = lc
@@ -53,7 +53,7 @@ export default {
                         await services.socket.sendMessage(raw, true);
                         break;
                     case "chatters":
-                        let chattersMessage = `Current chatters: ${services.socket.chatters.length <= data.CHATTERS_LIMIT ? `${services.socket.chatters.map(chatter => `${chatter.user.username}`).join(', ')}` : `${services.socket.chatters.map(chatter => `${chatter.user.username}`).slice(0, data.CHATTERS_LIMIT).join(', ')}... and ${(services.socket.chatters.length - data.CHATTERS_LIMIT).toLocaleString()} more`}`;
+                        let chattersMessage = `Current chatters: ${services.socket.chatters.length <= data.CHATTERS_LIMIT ? `${services.socket.chatters.map(chatter => `${chatter.username}`).join(', ')}` : `${services.socket.chatters.map(chatter => `${chatter.username}`).slice(0, data.CHATTERS_LIMIT).join(', ')}... and ${(services.socket.chatters.length - data.CHATTERS_LIMIT).toLocaleString()} more`}`;
                         collect({ id: Math.floor(Math.random() * 100000), content: chattersMessage, system: true, date: new Date().toISOString() }, 'chat-messages');
                         break;
                     default:
