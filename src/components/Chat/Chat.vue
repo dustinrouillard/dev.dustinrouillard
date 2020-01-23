@@ -27,10 +27,9 @@ export default {
 <style>
 .chat-messages {
   overflow-x: auto;
-  margin-top: 60px;
-  margin-left: 12px;
-  margin-right: 10px;
-  width: 100%;
+  margin-top: 12%;
+  margin-left: 3%;
+  margin-right: 3%;
   max-height: 43vw;
   bottom: 0;
 }
@@ -38,5 +37,9 @@ export default {
 .chat-messages::-webkit-scrollbar {
   display: none;
   overflow: hidden;
+}
+
+.message {
+  margin-bottom: 16px;
 }
 </style>

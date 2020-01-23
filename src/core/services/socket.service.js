@@ -58,20 +58,24 @@ export default {
             });
         },
 
-        sendMessage({ local, messages, data}, content) {
+        sendMessage({ local, messages, data}, content, action) {
             let ws = local.instance || null;
             if (ws && ws.readyState != ws.OPEN) return;
 
             let nonce = Math.floor(Math.random() * 999999999999) + 1000000000;
             data.pendingMessages.push(nonce);
 
-            ws.send(JSON.stringify({
+            let msgData = {
                 op: 1,
                 data: {
                     content,
-                    nonce
+                    nonce,
+                    action
                 },
-            }));
+            };
+            ws.send(JSON.stringify(msgData));
+
+            return msgData;
         },
 
         socketEvent({ local, data, messages }) {

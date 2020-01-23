@@ -74,12 +74,14 @@ export default {
   methods: {
     async sendMessage() {
       if (this.message == "") return;
+
       this.$messages.send(this.message);
       this.message = "";
       setTimeout(() => {
         let container = this.$el.querySelector("#messageContainer");
         container.scrollTop = container.scrollHeight;
       }, 2);
+
       return true;
     },
     async scrollToEnd() {}
@@ -120,6 +122,10 @@ export default {
   border-left-style: inset;
 }
 
+.chat-content {
+  width: -webkit-fill-available;
+}
+
 .chat-header {
   background-color: #0a0a0a;
   border-color: #bebebe00;
@@ -147,13 +153,12 @@ export default {
   position: absolute;
   display: flex;
   max-height: 20px;
-  max-width: 1000px;
-  height: 25px;
-  width: 89%;
+  height: 18%;
+  width: 85%;
   margin-top: 13px;
-  margin-left: 15px;
-  margin-right: 15px;
-  margin-bottom: 45px;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 10%;
   top: 0;
   bottom: 0;
   left: 0;
@@ -171,7 +176,7 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 105px;
+  height: 12%;
   display: flex;
   border-color: #bebebe00;
   border-top: 1px;
@@ -184,14 +189,13 @@ export default {
   right: 0;
   bottom: 0;
   height: 25px;
-  width: 94%;
-  min-width: 443px;
+  width: 91%;
   background: #442dad;
   color: white;
   border: 0;
-  margin-left: 15px;
-  margin-right: 15px;
-  margin-bottom: 12px;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 3%;
   border-radius: 2px;
   text-decoration: none;
   cursor: pointer;

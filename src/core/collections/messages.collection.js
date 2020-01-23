@@ -13,12 +13,39 @@ export default {
     },
     actions: {
         async send({ collect, services, data }, content) {
-            let author = { username: data.account.username, name: data.account.name };
-            collect({ id: Math.floor(Math.random() * 100000), content, author, date: new Date().toISOString() }, 'chat-messages');
-            
-            await services.socket.sendMessage(content);
 
-            return true;
+            if (content.startsWith('/')) {
+                let lc = content.toLowerCase();
+                let cmd = lc
+                    .split("/")
+                    .slice(1)
+                    .join("")
+                    .split(" ")[0];
+
+                let raw = content.split(" ").splice(1).join(" ");
+
+                switch (cmd) {
+                    case "ping":
+                        let content = 'Pong!';
+                        collect({ id: Math.floor(Math.random() * 100000), content, system: true, date: new Date().toISOString() }, 'chat-messages');
+                        break;
+
+                    case "me":
+                        let author = { username: data.account.username, name: data.account.name, action: true };
+                        collect({ id: Math.floor(Math.random() * 100000), author, content: raw, date: new Date().toISOString() }, 'chat-messages');
+                        await services.socket.sendMessage(raw, true);
+                        break;
+                    default:
+                        break;
+                }
+            } else {
+                let author = { username: data.account.username, name: data.account.name };
+                collect({ id: Math.floor(Math.random() * 100000), content, author, date: new Date().toISOString() }, 'chat-messages');
+
+                await services.socket.sendMessage(content);
+
+                return true;
+            }
         },
 
         populate({ collect }) {
