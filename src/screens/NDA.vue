@@ -3,7 +3,7 @@
     <video ref="videoPlayer" class="video-js"></video>
     <div class="chat-sidebar">
       <div class="chat-header">
-        <h3 class="chat-header-title">Welcome to the chat room</h3>
+        <h3 class="chat-header-title">{{ stream.title }}</h3>
         <span class="chatters">{{ chattersCount }}</span>
       </div>
       <div class="chat-content">
@@ -30,6 +30,7 @@ export default {
   data() {
     return {
       stream: {
+        title: "First Gaming Stream LULW",
         online: true
       },
       message: "",
