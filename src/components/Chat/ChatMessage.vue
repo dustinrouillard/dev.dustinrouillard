@@ -39,7 +39,7 @@ export default {
 }
 
 .chat-message {
-  font-size: 16px;
+  font-size: 14px;
 
   -webkit-animation: fadein 0.7s; /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadein 0.7s; /* Firefox < 16 */
@@ -53,12 +53,15 @@ export default {
 }
 
 .space-right {
-  margin-right: 3%;
+  margin-right: 8px;
 }
 
 .action-message {
   font-style: italic;
   color: #4283c0;
+  &.chat-message {
+    font-size: 13px;
+  }
 }
 
 .system-message {
