@@ -73,8 +73,8 @@ export default {
 .suggested {
   z-index: 999;
   position: absolute;
-  top: -200px;
   width: 100%;
+  bottom: 101%;
 
   p {
     margin: 0;
