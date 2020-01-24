@@ -27,7 +27,7 @@ export default {
   data() {
     return {
       message: "",
-      commands: ["ping", "me"],
+      commands: ["ping", "me", "chatters"],
       commandSuggested: []
     };
   },
