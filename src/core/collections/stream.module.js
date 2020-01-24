@@ -9,7 +9,7 @@ export default {
             return {
                 autoplay: true,
                 muted: true,
-                controls: stream.online,
+                controls: true,
                 poster: "https://assets.notify.me/covers/2.png",
                 suppressNotSupportedError: true,
                 live: true,

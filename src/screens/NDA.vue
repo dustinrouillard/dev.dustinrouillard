@@ -47,14 +47,26 @@ export default {
     this.$messages.populate();
     this.$socket.connect(this.$el.querySelector("#messageContainer"));
     setTimeout(() => {
-      console.log(this.options, this.streamUrl);
       this.player = videojs(this.$refs.videoPlayer, this.options);
-      this.player.src(this.streamUrl);
-      this.player.options(this.options);
-    }, 1000);
+    }, 100);
   },
   watch: {
-    options() {}
+    options() {
+      console.log(this.options);
+      this.player.src(this.streamUrl);
+      this.player.options(this.options);
+    },
+
+    streamUrl() {
+      if (this.streamUrl == null) {
+        this.player.reset();
+        setTimeout(() => {
+          this.player.poster(this.options.poster);
+        }, 100);
+      } else {
+        this.player.src(this.streamUrl);
+      }
+    }
   },
   beforeDestroy() {
     if (this.player) {

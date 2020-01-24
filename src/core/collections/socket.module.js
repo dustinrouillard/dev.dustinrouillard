@@ -49,6 +49,7 @@ export default {
                     // Log and set connectionAlive true
                     actions.connectionAlive = true;
 
+                    messages.collect({ id: Math.floor(Math.random() * 100000), content: 'Connected!', system: true, date: new Date().toISOString() }, 'chat-messages');
                     messages.collect({ id: Math.floor(Math.random() * 100000), content: 'Welcome to the chat room, remember everything on stream and in chat is confidential and is not allowed to be shared under any circumstances', system: true, date: new Date().toISOString() }, 'chat-messages');
                 };
 
@@ -68,14 +69,7 @@ export default {
             let nonce = Math.floor(Math.random() * 999999999999) + 1000000000;
             data.pendingMessages.push(nonce);
 
-            let msgData = {
-                op: 1,
-                data: {
-                    content,
-                    nonce,
-                    action
-                },
-            };
+            let msgData = { op: 1, data: { content, nonce, action }, };
             ws.send(JSON.stringify(msgData));
 
             return msgData;
@@ -95,12 +89,8 @@ export default {
                             let nonce = payload.data.nonce;
 
                             // delete payload.data.nonce;
-                            if (!messagePending) {
-                                messages.collect(payload.data, 'chat-messages');
-                            } else {
-                                // console.log(nonce, payload.data.nonce);
-                                messages.update(nonce, payload.data);
-                            }
+                            if (!messagePending) messages.collect(payload.data, 'chat-messages');
+                            else messages.update(nonce, payload.data);
 
                             local.container.scrollTop = local.container.scrollHeight;
 
@@ -118,11 +108,8 @@ export default {
 
                             if (typeof payload.data.online != 'undefined') return;
 
-                            if (stream.online) {
-                                messages.collect({ id: Math.floor(Math.random() * 100000), content: 'Stream started', system: true, date: new Date().toISOString() }, 'chat-messages');
-                            } else {
-                                messages.collect({ id: Math.floor(Math.random() * 100000), content: 'Stream ended', system: true, date: new Date().toISOString() }, 'chat-messages');
-                            }
+                            if (stream.online) messages.collect({ id: Math.floor(Math.random() * 100000), content: 'Stream started', system: true, date: new Date().toISOString() }, 'chat-messages');
+                            else messages.collect({ id: Math.floor(Math.random() * 100000), content: 'Stream ended', system: true, date: new Date().toISOString() }, 'chat-messages');
 
                             break;
 
