@@ -26,6 +26,18 @@ export default new Router({
       component: () => import('../screens/NDA.vue')
     },
     {
+      path: '/chat',
+      name: 'NDA Chat',
+      beforeEnter: (to, from, next) => {
+        if (!core.accounts.authenticated) {
+          next('/login');
+        } else {
+          next();
+        }
+      },
+      component: () => import('../screens/NDAChat.vue')
+    },
+    {
       path: '/login',
       name: 'NDA Login',
       beforeEnter: (to, from, next) => {
