@@ -14,7 +14,7 @@ export default {
         
     },
     actions: {
-        async send({ collect, services, data, messages }, content) {
+        async send({ collect, socket, data, messages }, content) {
             
             data.lastMessage = content;
 
@@ -28,7 +28,6 @@ export default {
                 
                 let raw = content.split(" ").splice(1).join(" ");
                 
-
                 switch (cmd) {
                     case "ping":
                         let content = 'Pong!';
@@ -45,10 +44,10 @@ export default {
 
                         let author = { username: data.account.username, name: data.account.name, action: true };
                         collect({ id: Math.floor(Math.random() * 100000), author, content: raw, date: new Date().toISOString() }, 'chat-messages');
-                        await services.socket.sendMessage(raw, true);
+                        await socket.sendMessage(raw, true);
                         break;
                     case "chatters":
-                        let chattersMessage = `Current chatters: ${services.socket.chatters.length <= data.CHATTERS_LIMIT ? `${services.socket.chatters.map(chatter => `${chatter.username}`).join(', ')}` : `${services.socket.chatters.map(chatter => `${chatter.username}`).slice(0, data.CHATTERS_LIMIT).join(', ')}... and ${(services.socket.chatters.length - data.CHATTERS_LIMIT).toLocaleString()} more`}`;
+                        let chattersMessage = `Current chatters: ${socket.chatters.length <= data.CHATTERS_LIMIT ? `${socket.chatters.map(chatter => `${chatter.username}`).join(', ')}` : `${socket.chatters.map(chatter => `${chatter.username}`).slice(0, data.CHATTERS_LIMIT).join(', ')}... and ${(socket.chatters.length - data.CHATTERS_LIMIT).toLocaleString()} more`}`;
                         collect({ id: Math.floor(Math.random() * 100000), content: chattersMessage, system: true, date: new Date().toISOString() }, 'chat-messages');
                         break;
                     default:
@@ -65,7 +64,7 @@ export default {
                 let author = { username: data.account.username, name: data.account.name };
                 collect({ id: Math.floor(Math.random() * 100000), content, author, date: new Date().toISOString() }, 'chat-messages');
 
-                await services.socket.sendMessage(content);
+                await socket.sendMessage(content);
 
                 return true;
             }

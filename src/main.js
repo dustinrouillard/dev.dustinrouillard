@@ -23,7 +23,7 @@ library.add({ faTwitter, faLinkedinIn, faTwitch, faGithub, faGitlab, faDiscord, 
 
 Vue.component('fa', FontAwesomeIcon);
 
-Vue.use(VueChatScroll)
+Vue.use(VueChatScroll);
 
 // Vue shortkey
 Vue.use(VueShortkey);

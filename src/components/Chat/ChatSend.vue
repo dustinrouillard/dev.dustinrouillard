@@ -1,7 +1,12 @@
 <template>
   <div>
     <div class="suggested" ref="suggested">
-      <div v-for="(item, i) in commandSuggested" :key="i" class="suggested-item" @click="SelectSuggested(item)">
+      <div
+        v-for="(item, i) in commandSuggested"
+        :key="i"
+        class="suggested-item"
+        @click="SelectSuggested(item)"
+      >
         <p>{{ item }}</p>
       </div>
     </div>
@@ -22,13 +27,13 @@ export default {
   data() {
     return {
       message: "",
-      commands: ['ping', 'me'],
+      commands: ["ping", "me"],
       commandSuggested: []
-    }
+    };
   },
   methods: {
     SelectSuggested(cmd) {
-      this.message = '/' + cmd
+      this.message = "/" + cmd;
     },
     async sendMessage() {
       if (this.message == "") return;
@@ -48,22 +53,19 @@ export default {
   watch: {
     message() {
       let m = this.message;
-      
-      if (m.startsWith('/')) {
-         m = m.replace('/', '');
 
-         // If the word is already fully typed 
-        if (this.commands.indexOf(m) !== -1) return this.commandSuggested = [];
+      if (m.startsWith("/")) {
+        m = m.replace("/", "");
+
+        // If the word is already fully typed
+        if (this.commands.includes(m)) return (this.commandSuggested = []);
 
         // Return a list with commands that will be suggested
         this.commandSuggested = this.commands.filter(v => v.includes(m));
-
       } else if (this.commandSuggested.length > 0) this.commandSuggested = [];
-
-
     }
   }
-}
+};
 </script>
 
 
@@ -85,7 +87,7 @@ export default {
     padding: 5px 0;
     padding-left: 15px;
     font-style: italic;
-        bottom: 100%;
+    bottom: 100%;
 
     &:hover {
       background: black;
@@ -94,7 +96,6 @@ export default {
     p {
       vertical-align: bottom;
     }
-
   }
 }
 </style>

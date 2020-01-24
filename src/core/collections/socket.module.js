@@ -28,7 +28,7 @@ export default {
             ws.send(JSON.stringify({ type: 'PING' }));
         },
 
-        connect({ data, local, actions }, container) {
+        connect({ data, local, actions, messages }, container) {
             // Check if the connection is alive
             if (data.connectionAlive) return;
 
@@ -48,6 +48,8 @@ export default {
 
                     // Log and set connectionAlive true
                     actions.connectionAlive = true;
+
+                    messages.collect({ id: Math.floor(Math.random() * 100000), content: 'Welcome to the chat room, remember everything on stream and in chat is confidential and is not allowed to be shared under any circumstances', system: true, date: new Date().toISOString() }, 'chat-messages');
                 };
 
                 local.instance.onclose = event => {
@@ -59,7 +61,7 @@ export default {
             });
         },
 
-        sendMessage({ local, messages, data}, content, action) {
+        sendMessage({ local, data }, content, action) {
             let ws = local.instance || null;
             if (ws && ws.readyState != ws.OPEN) return;
 
@@ -79,7 +81,7 @@ export default {
             return msgData;
         },
 
-        socketEvent({ local, data, messages }) {
+        socketEvent({ local, data, messages, stream }) {
             local.instance.onmessage = message => {
                 try {
                     let payload = JSON.parse(message.data);
@@ -109,7 +111,19 @@ export default {
                             data.chatters = payload.data.chatters;
                             break;
                         case 9:
-                            
+                            stream.online = !!payload.data.url
+
+                            stream.url = payload.data.url;
+                            stream.title = payload.data.title;
+
+                            if (typeof payload.data.online != 'undefined') return;
+
+                            if (stream.online) {
+                                messages.collect({ id: Math.floor(Math.random() * 100000), content: 'Stream started', system: true, date: new Date().toISOString() }, 'chat-messages');
+                            } else {
+                                messages.collect({ id: Math.floor(Math.random() * 100000), content: 'Stream ended', system: true, date: new Date().toISOString() }, 'chat-messages');
+                            }
+
                             break;
 
                         case 10:

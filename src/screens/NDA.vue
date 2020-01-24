@@ -1,13 +1,9 @@
 <template>
   <div class="main">
-    <video
-      ref="videoPlayer"
-      class="video-js"
-      :style="{ 'pointer-events': !stream.online ? 'none' : ''  }"
-    ></video>
+    <video ref="videoPlayer" class="video-js"></video>
     <div class="chat-sidebar">
       <div class="chat-header">
-        <h3 class="chat-header-title">{{ stream.title }}</h3>
+        <h3 class="chat-header-title">{{ streamTitle }}</h3>
         <span class="chatters">{{ chattersCount }}</span>
       </div>
       <div class="chat-content">
@@ -15,7 +11,7 @@
       </div>
       <div class="chat-footer">
         <div class="chat-box-outter">
-          <ChatSend/>
+          <ChatSend />
         </div>
       </div>
     </div>
@@ -32,27 +28,15 @@ export default {
   data() {
     return {
       ...this.mapData(core => ({
-        stream: core.services.stream.stream
+        lastMessage: core.messages.lastMessage,
+        chatters: core.socket.chatters,
+        chattersCount: core.socket.chattersCount,
+        streamUrl: core.stream.url,
+        streamTitle: core.stream.title,
+        options: core.stream.options
       })),
       message: "",
-      ...this.mapData(core => ({
-        lastMessage: core.messages.lastMessage,
-        chatters: core.services.socket.chatters,
-        chattersCount: core.services.socket.chattersCount
-      })),
-      player: null,
-      options: {
-        autoplay: true,
-        muted: true,
-        ...this.mapData(core => ({
-          controls: core.services.stream.stream.online
-        })),
-        poster: "https://assets.notify.me/covers/2.png",
-        ...this.mapData(core => ({
-          suppressNotSupportedError: true,
-          sources: [core.services.stream.stream.url]
-        }))
-      }
+      player: null
     };
   },
   components: {
@@ -61,18 +45,16 @@ export default {
   },
   mounted() {
     this.$messages.populate();
-    this.$services.socket.connect(this.$el.querySelector("#messageContainer"));
-
-    this.player = videojs(
-      this.$refs.videoPlayer,
-      this.options,
-      function onPlayerReady() {
-        console.log("onPlayerReady", this);
-      }
-    );
-
-    console.log(this.stream, this.options);
-    // this.player.on('')
+    this.$socket.connect(this.$el.querySelector("#messageContainer"));
+    setTimeout(() => {
+      console.log(this.options, this.streamUrl);
+      this.player = videojs(this.$refs.videoPlayer, this.options);
+      this.player.src(this.streamUrl);
+      this.player.options(this.options);
+    }, 1000);
+  },
+  watch: {
+    options() {}
   },
   beforeDestroy() {
     if (this.player) {
@@ -155,13 +137,11 @@ export default {
 .chat-box {
   position: absolute;
   display: flex;
-  max-height: 20px;
   height: 18%;
   width: 85%;
   margin-top: 13px;
   margin-left: 5%;
   margin-right: 5%;
-  margin-bottom: 10%;
   top: 0;
   bottom: 0;
   left: 0;
@@ -179,7 +159,7 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 12%;
+  height: 10%;
   display: flex;
   border-color: #bebebe00;
   border-top: 1px;
@@ -191,11 +171,12 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 25px;
+  height: 28%;
   width: 91%;
   background: #442dad;
   color: white;
   border: 0;
+  margin-top: 100%;
   margin-left: 5%;
   margin-right: 5%;
   margin-bottom: 3%;
