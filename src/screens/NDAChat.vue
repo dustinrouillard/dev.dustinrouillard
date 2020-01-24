@@ -18,7 +18,6 @@
 </template>
 
 <script>
-import videojs from "video.js";
 import Chat from "../components/Chat/PopoutChat";
 import ChatSend from "../components/Chat/ChatSend";
 
@@ -31,11 +30,9 @@ export default {
         chatters: core.socket.chatters,
         chattersCount: core.socket.chattersCount,
         streamUrl: core.stream.url,
-        streamTitle: core.stream.title,
-        options: core.stream.options
+        streamTitle: core.stream.title
       })),
-      message: "",
-      player: null
+      message: ""
     };
   },
   components: {
@@ -43,34 +40,7 @@ export default {
     ChatSend
   },
   mounted() {
-    this.$messages.populate();
     this.$socket.connect(this.$el.querySelector("#messageContainer"));
-    setTimeout(() => {
-      this.player = videojs(this.$refs.videoPlayer, this.options);
-    }, 100);
-  },
-  watch: {
-    options() {
-      console.log(this.options);
-      this.player.src(this.streamUrl);
-      this.player.options(this.options);
-    },
-
-    streamUrl() {
-      if (this.streamUrl == null) {
-        this.player.reset();
-        setTimeout(() => {
-          this.player.poster(this.options.poster);
-        }, 100);
-      } else {
-        this.player.src(this.streamUrl);
-      }
-    }
-  },
-  beforeDestroy() {
-    if (this.player) {
-      this.player.dispose();
-    }
   },
   methods: {
     async sendMessage() {
@@ -84,15 +54,12 @@ export default {
       }, 2);
 
       return true;
-    },
-    async scrollToEnd() {}
+    }
   }
 };
 </script>
 
 <style lang="scss">
-@import "../assets/css/video-js.min.css";
-
 .chat-sidebar {
   margin: auto;
   width: 23%;
