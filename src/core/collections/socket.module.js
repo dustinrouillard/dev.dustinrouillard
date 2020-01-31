@@ -15,11 +15,18 @@ export default {
         getSocketToken: request => request.get(`auth/ws`)
     },
     actions: {
-        async getSocketToken({ data, routes }) {
-            await routes.getSocketToken().then(res => {
-                data.token = res.data.token;
-            });
-            return true;
+        async getSocketToken({ data, routes, accounts }) {
+            try {
+                let tokenReq = await routes.getSocketToken();
+                data.token = tokenReq.data.token;
+
+                return true;
+            } catch (error) {
+                data.token = null;
+                accounts.authenticated = false;
+                window.location = '/login';
+                return false;
+            }
         },
 
         heartbeat({ local }) {
