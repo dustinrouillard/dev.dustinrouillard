@@ -30,7 +30,7 @@ export default {
   margin-top: 12%;
   margin-left: 3%;
   margin-right: 3%;
-  max-height: 43vw;
+  max-height: 86%;
   bottom: 0;
 }
 

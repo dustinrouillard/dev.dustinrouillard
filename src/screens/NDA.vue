@@ -173,6 +173,7 @@ export default {
   right: 0;
   height: 10%;
   display: flex;
+  background: #1b1b1b;
   border-color: #bebebe00;
   border-top: 1px;
   border-top-style: inset;
