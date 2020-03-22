@@ -28,6 +28,7 @@
     "vue-typer": "^1.2.0",
     "vue-video-player": "^5.0.2",
     "vue-vjs-hls": "github:ice48623/vue-video-player",
+    "vuedraggable": "^2.23.2",
     "vuex": "^3.1.0"
   },
   "devDependencies": {

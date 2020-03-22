@@ -1,8 +1,9 @@
-@import './variables.scss';
-@import './dank.scss';
-@import './modal.scss';
+@import "./variables.scss";
+@import "./dank.scss";
+@import "./modal.scss";
 
-body, html {
+body,
+html {
   background-color: $bgColor;
   color: $txtColor;
 
@@ -11,7 +12,15 @@ body, html {
   overflow: auto;
 }
 
-a, a:link, a:visited, a:hover, a:active {
+.modal-body {
+  scrollbar-color: light;
+}
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
   text-decoration: none;
   color: inherit;
 }
@@ -28,7 +37,7 @@ a, a:link, a:visited, a:hover, a:active {
 }
 
 .background-image {
-  background: url('assets/background.jpg');
+  background: url("assets/background.jpg");
 
   filter: blur(10px);
   -webkit-filter: blur(10px);
@@ -45,11 +54,10 @@ a, a:link, a:visited, a:hover, a:active {
   height: 180px;
 }
 
-
 .header {
   font-weight: 300;
   font-size: 1rem;
-  line-height: 1.10;
+  line-height: 1.1;
   text-align: center;
   margin: auto;
   position: absolute;
@@ -62,7 +70,7 @@ a, a:link, a:visited, a:hover, a:active {
 }
 
 .info {
-  background-color: rgb(0,0,0);
+  background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.29);
   margin-top: 15px;
   padding: 0 12px 0 12px;
@@ -78,18 +86,22 @@ a, a:link, a:visited, a:hover, a:active {
   font-family: "dm";
   text-transform: uppercase;
   letter-spacing: 0.2rem;
-  font-size: 17px;  
-  width: 200px;
+  font-size: 17px;
+  max-width: 200px;
+  width: 180px;
   height: 40px;
   color: #fff;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0, 0.4);
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
   border: 1px solid;
   border-color: #ffffff00;
   &:hover {
     background-color: #2b2b2b;
     background-color: rgba(0, 0, 0, 0.66);
-  }  
+  }
+  &.margin-right {
+    margin-right: 4px;
+  }
 }
 
 .button {
@@ -99,8 +111,8 @@ a, a:link, a:visited, a:hover, a:active {
   width: 150px;
   height: 40px;
   color: #fff;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0, 0.4);
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
   border: 1px solid;
   border-color: #ffffff00;
   &:hover {
@@ -206,14 +218,17 @@ a, a:link, a:visited, a:hover, a:active {
   }
 }
 
-.tippy-tooltip, .tippy-backdrop {
+.tippy-tooltip,
+.tippy-backdrop {
   background-color: #111111;
   font-size: 13px;
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.281);
 }
 
-.tippy-popper, .tippy-tooltip, .tippy-arrow {
-  font-family: 'dm';
+.tippy-popper,
+.tippy-tooltip,
+.tippy-arrow {
+  font-family: "dm";
   border-bottom-color: #111111;
 }
 
@@ -228,7 +243,7 @@ a, a:link, a:visited, a:hover, a:active {
     text-align: center;
   }
   .tab {
-  margin-right: unset;
+    margin-right: unset;
   }
   .avatar {
     width: 140px;
@@ -241,4 +256,10 @@ a, a:link, a:visited, a:hover, a:active {
     margin-top: 5px;
     margin-bottom: 5px;
   }
+}
+
+.domains {
+  max-height: 400px;
+  overflow: scroll;
+  margin-bottom: -20px;
 }

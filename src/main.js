@@ -13,13 +13,13 @@ import router from './router';
 
 // Font Awesome Libraries
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faEnvelope, faCodeBranch } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faCodeBranch, faGlobe, faStar } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter, faLinkedinIn, faTwitch, faGithub, faGitlab, faDiscord, faNpm, faPatreon, faKeybase } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 import VueChatScroll from 'vue-chat-scroll';
 
-library.add({ faTwitter, faLinkedinIn, faTwitch, faGithub, faGitlab, faDiscord, faNpm, faEnvelope, faPatreon, faKeybase, faCodeBranch });
+library.add({ faTwitter, faLinkedinIn, faTwitch, faGithub, faGitlab, faDiscord, faNpm, faEnvelope, faPatreon, faKeybase, faCodeBranch, faGlobe, faStar });
 
 Vue.component('fa', FontAwesomeIcon);
 
