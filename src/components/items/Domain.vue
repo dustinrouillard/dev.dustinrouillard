@@ -7,7 +7,7 @@
     <span title="Primary Domain" v-tippy="{ placement: 'bottom' }"
       ><fa :icon="['fa', 'star']" class="domain-primary" v-if="domain.primary"
     /></span>
-    <p class="domain-added">{{ new Date(domain.added).toLocaleString() }}</p>
+    <p class="domain-added">{{ "Date coming soon™" }}</p>
   </div>
 </template>
 
@@ -15,7 +15,7 @@
 export default {
   name: "domain",
   props: ["domain"],
-  components: {}
+  components: {},
 };
 </script>
 

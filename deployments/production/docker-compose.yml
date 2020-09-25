@@ -1,9 +1,0 @@
-version: "3.7"
-
-services:
-  app:
-    build:
-      context: ../../
-      dockerfile: deployments/production/Dockerfile
-    ports:
-      - "8080:5000"
