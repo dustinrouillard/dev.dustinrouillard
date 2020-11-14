@@ -6,12 +6,12 @@
           <h1>About</h1>
         </div>
         <div class="modal-body about">
-          Hello there, I'm Dustin Rouillard, I'm 20 and I currently live in
-          Vancouver, British Colombia, but might potentially be moving to Los
-          Angeles sometime next year.
+          Hello there, I'm Dustin Rouillard, I'm 21 and I currently live in
+          New Mexico, USA. But would like to move to Colorado sometime in
+          within next year.
           <br />
-          <br />I'm a fullstack developer who specializes in Node.js, I'm
-          currently attempting to learn Go to advance my skill set.
+          <br />I'm a fullstack developer who specializes in Typescript,
+          I'm fluent in Go as well for fast server side loads.
           <br />
           <br />I'm not very good at frontend design work, but it's a learning
           process, this site was actually created using Vue from the knowledge I
@@ -25,9 +25,9 @@
           linux based. But in my freetime I am learning more about other tools
           to make myself useful in other environments.
           <br />
-          <br />I'm in the process of learning anything and everything there is
-          to know about cloud infrastructure, and how all that works. I'm really
-          interested in Kubernetes personally.
+          <br />I can basically work my way around any cloud infrastructure platform.
+          I've been working with kubernetes for the past couple years and now I use it
+          for everything I do.
         </div>
         <footer class="modal-footer">
           <slot name="footer">
