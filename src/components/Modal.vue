@@ -7,8 +7,8 @@
         </div>
         <div class="modal-body about">
           Hello there, I'm Dustin Rouillard, I'm 21 and I currently live in
-          New Mexico, USA. But would like to move to Colorado sometime in
-          within next year.
+          New Mexico, USA. But would like to move to Colorado sometime
+          within the next year.
           <br />
           <br />I'm a fullstack developer who specializes in Typescript,
           I'm fluent in Go as well for fast server side loads.
